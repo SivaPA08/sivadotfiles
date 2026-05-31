@@ -1,0 +1,92 @@
+return {
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+          comments = { italic = false },
+          keywords = { italic = false },
+        },
+        on_colors = function(colors)
+          colors.bg = "NONE"
+          colors.bg_dark = "NONE"
+          colors.bg_float = "NONE"
+          colors.bg_sidebar = "NONE"
+
+          -- Ultra-soft, low-contrast base colors with warmer tones
+          colors.fg = "#9aa5c5"
+          colors.fg_dark = "#7a869e"
+          colors.fg_gutter = "#3a4258"
+
+          -- Dreamy muted pastels with reduced saturation
+          colors.blue = "#6d91d9"
+          colors.cyan = "#68c2e8"
+          colors.green = "#88c575"
+          colors.orange = "#d4a665"
+          colors.purple = "#a989e0"
+          colors.red = "#e8768a"
+          colors.yellow = "#d4a665"
+          colors.magenta = "#a989e0"
+        end,
+        on_highlights = function(hl, c)
+          -- Gentle base highlights with minimal contrast
+          hl.Normal = { fg = "#9aa5c5", bg = "NONE" }
+          hl.Comment = { fg = "#515975" }
+          hl.LineNr = { fg = "#373d52" }
+          hl.CursorLineNr = { fg = "#6a7090" }
+          hl.CursorLine = { bg = "NONE" }
+
+          -- Soft, harmonious syntax colors
+          hl.String = { fg = "#88c575" }
+          hl.Function = { fg = "#6d91d9" }
+          hl.Keyword = { fg = "#a989e0" }
+          hl.Type = { fg = "#d4a665" }
+          hl.Constant = { fg = "#e89770" }
+          hl.Operator = { fg = "#7ab8d6" }
+
+          -- Treesitter highlights with gentle contrast
+          hl["@string"] = { fg = "#88c575" }
+          hl["@function"] = { fg = "#6d91d9" }
+          hl["@function.builtin"] = { fg = "#68c2e8" }
+          hl["@function.method"] = { fg = "#6d91d9" }
+          hl["@keyword"] = { fg = "#a989e0" }
+          hl["@keyword.function"] = { fg = "#a989e0" }
+          hl["@keyword.return"] = { fg = "#a989e0" }
+          hl["@type"] = { fg = "#d4a665" }
+          hl["@type.builtin"] = { fg = "#68c2e8" }
+          hl["@constant"] = { fg = "#e89770" }
+          hl["@constant.builtin"] = { fg = "#e89770" }
+          hl["@operator"] = { fg = "#7ab8d6" }
+          hl["@variable"] = { fg = "#9aa5c5" }
+          hl["@variable.builtin"] = { fg = "#e8768a" }
+          hl["@parameter"] = { fg = "#d4a665" }
+          hl["@property"] = { fg = "#88c575" }
+          hl["@punctuation.bracket"] = { fg = "#7a869e" }
+          hl["@punctuation.delimiter"] = { fg = "#7a869e" }
+
+          -- UI elements with softer contrast
+          hl.Visual = { bg = "#2a3247" }
+          hl.Search = { bg = "#2a3247", fg = "#d4a665" }
+          hl.IncSearch = { bg = "#3a4258", fg = "#e89770" }
+          hl.Pmenu = { bg = "NONE", fg = "#9aa5c5" }
+          hl.PmenuSel = { bg = "#2a3247", fg = "#6d91d9" }
+        end,
+      })
+      vim.cmd.colorscheme("tokyonight")
+
+      -- Ensure transparency is applied
+      vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+    end,
+  },
+}
