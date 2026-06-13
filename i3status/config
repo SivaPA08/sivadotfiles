@@ -6,11 +6,20 @@ general {
     color_bad      = "#ffffff"
 }
 
+order += "volume master"
 order += "cpu_usage"
 order += "memory"
 order += "disk /"
 order += "battery 0"
 order += "tztime local"
+
+volume master {
+    format = "VOL: %volume"
+    format_muted = "VOL: muted"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
 
 cpu_usage {
     format = "CPU: %usage"
@@ -37,5 +46,5 @@ battery 0 {
 }
 
 tztime local {
-    format = "%d-%m-%Y %H:%M:%S"
+    format = "%d-%m-%Y %H:%M"
 }
