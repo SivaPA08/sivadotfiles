@@ -98,7 +98,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu wmenu-run
+set $menu "wofi --show drun --allow-images"
 
 include /etc/sway/config-vars.d/*
 
