@@ -1,0 +1,38 @@
+window {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+#outer-box {
+    margin: 5px;
+}
+
+#input {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px;
+    margin: 5px;
+}
+
+#inner-box {
+    margin: 5px;
+}
+
+#entry {
+    padding: 6px;
+}
+
+#entry:selected {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#text {
+    color: inherit;
+}
+
+#img {
+    margin-right: 8px;
+}
