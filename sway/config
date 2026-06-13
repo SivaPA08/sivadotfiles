@@ -1,0 +1,287 @@
+
+#######################################################################
+# SWAY CHEAT SHEET
+#
+# MOD KEY
+#   $mod = Super / Windows key
+#
+# TERMINAL
+#   Win + Enter          -> Open terminal (Alacritty)
+#
+# APPLICATION LAUNCHER
+#   Win + D              -> Open application launcher (wmenu)
+#
+# WINDOW MANAGEMENT
+#   Win + Q              -> Close focused window
+#   Win + F              -> Toggle fullscreen
+#   Win + Shift + Space  -> Toggle floating mode
+#   Win + Space          -> Switch focus between floating/tiled
+#   Win + A              -> Focus parent container
+#
+# WINDOW MOVEMENT
+#   Win + H              -> Focus left window
+#   Win + J              -> Focus down window
+#   Win + K              -> Focus up window
+#   Win + L              -> Focus right window
+#
+#   Win + Shift + H      -> Move window left
+#   Win + Shift + J      -> Move window down
+#   Win + Shift + K      -> Move window up
+#   Win + Shift + L      -> Move window right
+#
+# WORKSPACES
+#   Win + 1..0           -> Switch workspace
+#   Win + Shift + 1..0   -> Move window to workspace
+#
+# LAYOUTS
+#   Win + V              -> Vertical split
+#   Win + S              -> Stacking layout
+#   Win + W              -> Tabbed layout
+#   Win + Tab            -> Toggle split layout
+#
+# SCRATCHPAD
+#   Win + Shift + -      -> Send window to scratchpad
+#   Win + -              -> Show scratchpad window
+#
+# RESIZE MODE
+#   Win + R              -> Enter resize mode
+#
+#   Inside resize mode:
+#       H/J/K/L          -> Resize window
+#       Arrow keys       -> Resize window
+#       Enter/Escape     -> Exit resize mode
+#
+# LOCK SCREEN
+#   Win + Shift + L      -> Lock screen
+#
+# SCREENSHOTS
+#   Win + Shift + Print  -> Flameshot GUI screenshot
+#
+# APPLICATION SHORTCUTS
+#   Win + B              -> Firefox
+#   Win + C              -> Chromium
+#   Win + E              -> Thunar file manager
+#   Win + X              -> LibreOffice
+#
+# WORKSPACE CYCLING
+#   Alt + Tab            -> Next workspace
+#
+# AUDIO
+#   XF86AudioMute        -> Toggle mute
+#   XF86AudioLowerVolume -> Volume down
+#   XF86AudioRaiseVolume -> Volume up
+#   XF86AudioMicMute     -> Toggle microphone mute
+#
+# BRIGHTNESS
+#   XF86MonBrightnessUp   -> Increase brightness
+#   XF86MonBrightnessDown -> Decrease brightness
+#
+# COPY / PASTE
+#   F9                   -> Copy
+#   F10                  -> Paste
+#
+# SWAY MANAGEMENT
+#   Win + Shift + C      -> Reload sway config
+#   Win + Shift + Z      -> Logout
+#
+# POWER
+#   Win + Ctrl + Alt + F4 -> Shutdown system
+#   Win + Ctrl + Alt + F5 -> Reboot system
+#
+#######################################################################
+
+
+### Variables
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $menu wmenu-run
+
+include /etc/sway/config-vars.d/*
+
+### Output configuration
+output * bg #000000 solid_color
+
+### Idle / lock
+exec swayidle -w \
+         timeout 600 'swaylock -f -c 000000' \
+         before-sleep 'swaylock -f -c 000000'
+
+### Input configuration
+input type:keyboard xkb_numlock enabled
+
+### Key bindings
+#
+# Basics
+#
+    bindsym $mod+Return exec $term
+    bindsym $mod+q kill
+    bindsym $mod+d exec $menu
+    floating_modifier $mod normal
+    bindsym $mod+Shift+c reload
+
+    # Lock
+    bindsym $mod+Shift+l exec swaylock -f -c 000000
+
+    # Logout
+    bindsym $mod+Shift+z exec swaynag -t warning -m 'Log out of sway?' -B 'Yes, log out' 'swaymsg exit'
+
+
+#
+# Moving around
+#
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+#
+# Workspaces
+#
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+
+#
+# Layout
+#
+    bindsym $mod+v splitv
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+Tab layout toggle split
+    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space focus mode_toggle
+    bindsym $mod+a focus parent
+
+#
+# Scratchpad
+#
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+
+#
+# Resizing containers
+#
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#
+# Utilities
+#
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+    bindsym $mod+Shift+Print exec flameshot gui
+
+#
+# Status Bar
+#
+bar {
+    position top
+    status_command i3status
+
+    colors {
+        statusline         #ffffff
+        background         #000000
+        separator          #ffffff
+        focused_workspace   #ffffff #ffffff #000000
+        active_workspace    #4c4c4c #4c4c4c #ffffff
+        inactive_workspace  #000000 #000000 #ffffff
+        urgent_workspace    #ffffff #000000 #ffffff
+        binding_mode        #ffffff #000000 #ffffff
+    }
+}
+
+### Window appearance - black & white classic
+default_border pixel 2
+default_floating_border pixel 2
+
+client.focused          #ffffff #ffffff #000000 #ffffff #ffffff
+client.focused_inactive #4c4c4c #4c4c4c #ffffff #4c4c4c #4c4c4c
+client.unfocused        #000000 #000000 #ffffff #000000 #000000
+client.urgent           #ffffff #000000 #ffffff #000000 #ffffff
+client.placeholder      #000000 #000000 #ffffff #000000 #000000
+client.background       #000000
+
+font pango: JetBrains Mono 10
+
+# gaps inner 10
+# gaps left 4
+
+# Applications
+bindsym $mod+b exec firefox
+bindsym $mod+e exec thunar
+bindsym $mod+x exec libreoffice
+bindsym $mod+c exec chromium
+bindsym Alt+Tab workspace next
+
+include /etc/sway/config.d/*
+
+# Policykit to mount other hard disk drives
+exec /usr/bin/lxpolkit
+
+# Gammastep for bluelight reduction
+exec gammastep -O 3600 &
+
+# fcitx5
+exec --no-startup-id fcitx5 -d
+
+# Shutdown/reboot shortcuts
+bindsym $mod+Alt+Ctrl+F4 exec systemctl poweroff
+bindsym $mod+Alt+Ctrl+F5 exec systemctl reboot
+
+# Copy/paste using F9 and F10
+bindsym F9 exec wtype -k XF86Copy
+bindsym F10 exec wtype -k XF86Paste
+
+# output VGA-1 scale 1.5
