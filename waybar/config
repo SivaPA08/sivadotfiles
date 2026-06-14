@@ -1,0 +1,72 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "fixed-center": true,
+
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "disk",
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+        "tray"
+    ],
+
+    "clock": {
+        "interval": 60,
+        "format": "{:%a %d %b | %H:%M}",
+        "tooltip-format": "{:%A, %d %B %Y}"
+    },
+
+    "pulseaudio": {
+        "format": "VOL {volume}%"
+    },
+
+    "network": {
+        "format-wifi": "NET {signalStrength}%",
+        "format-ethernet": "ETH",
+        "format-disconnected": "OFF"
+    },
+
+    "disk": {
+        "path": "/",
+        "format": "DSK {percentage_used}%",
+        "tooltip-format": "{used} / {total} used"
+    },
+
+    "cpu": {
+        "format": "CPU {usage}%"
+    },
+
+    "memory": {
+        "format": "MEM {percentage}%"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "TMP {temperatureC}°C"
+    },
+
+    "battery": {
+        "format": "BAT {capacity}%",
+        "format-charging": "CHR {capacity}%",
+        "format-full": "FULL",
+        "states": {
+            "warning": 30,
+            "critical": 20
+        }
+    },
+
+    "tray": {
+        "spacing": 8
+    }
+}
