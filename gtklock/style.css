@@ -1,0 +1,29 @@
+window {
+    background: #000000;
+    color: #ffffff;
+}
+
+entry {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 0;
+    caret-color: #ffffff;
+    padding: 10px;
+}
+
+label {
+    color: #ffffff;
+}
+
+button {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 0;
+}
+
+button:hover {
+    background: #ffffff;
+    color: #000000;
+}
