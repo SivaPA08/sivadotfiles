@@ -103,8 +103,8 @@ set $menu "wofi --show drun --allow-images"
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
-# output * bg #000000 solid_color
-output * bg ~/Pictures/wallpapers/hackerdoggy.jpg fit
+output * bg #000000 solid_color
+# output * bg ~/Pictures/wallpapers/hackerdoggy.jpg fit
 
 ### Idle / lock
 exec swayidle -w \
