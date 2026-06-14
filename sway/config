@@ -103,12 +103,13 @@ set $menu "wofi --show drun --allow-images"
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
-output * bg #000000 solid_color
+# output * bg #000000 solid_color
+output * bg ~/Pictures/wallpapers/hackerdoggy.jpg fit
 
 ### Idle / lock
 exec swayidle -w \
-         timeout 600 'swaylock -f -c 000000' \
-         before-sleep 'swaylock -f -c 000000'
+         timeout 600 'gtklock' \
+         before-sleep 'gtklock'
 
 ### Input configuration
 input type:keyboard xkb_numlock enabled
@@ -124,7 +125,7 @@ input type:keyboard xkb_numlock enabled
     bindsym $mod+Shift+c reload
 
     # Lock
-    bindsym $mod+Shift+l exec swaylock -f -c 000000
+    bindsym $mod+Shift+l exec gtklock
 
     # Logout
     bindsym $mod+Shift+z exec swaynag -t warning -m 'Log out of sway?' -B 'Yes, log out' 'swaymsg exit'
@@ -227,19 +228,7 @@ bindsym $mod+r mode "resize"
 # Status Bar
 #
 bar {
-    position top
-    status_command i3status
-
-    colors {
-        statusline         #ffffff
-        background         #000000
-        separator          #ffffff
-        focused_workspace   #ffffff #ffffff #000000
-        active_workspace    #4c4c4c #4c4c4c #ffffff
-        inactive_workspace  #000000 #000000 #ffffff
-        urgent_workspace    #ffffff #000000 #ffffff
-        binding_mode        #ffffff #000000 #ffffff
-    }
+    swaybar_command waybar
 }
 
 ### Window appearance - black & white classic
@@ -253,7 +242,7 @@ client.urgent           #ffffff #000000 #ffffff #000000 #ffffff
 client.placeholder      #000000 #000000 #ffffff #000000 #000000
 client.background       #000000
 
-font pango: JetBrains Mono 10
+font pango: JetBrains Mono 12
 
 # gaps inner 10
 # gaps left 4
