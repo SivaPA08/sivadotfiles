@@ -1,0 +1,15 @@
+font-family = Hack Nerd Font
+font-size = 18
+
+background = #000000
+foreground = #d4d4d4
+
+background-opacity = 1.0
+
+cursor-style = block
+
+copy-on-select = clipboard
+
+shell-integration = detect
+
+command=tmux
