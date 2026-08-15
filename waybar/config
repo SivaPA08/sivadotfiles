@@ -5,7 +5,8 @@
     "fixed-center": true,
 
     "modules-left": [
-        "sway/workspaces"
+        "sway/workspaces",
+        "wlr/taskbar"
     ],
     "modules-center": [
         "clock"
@@ -34,7 +35,8 @@
     "network": {
         "format-wifi": "NET {signalStrength}%",
         "format-ethernet": "ETH",
-        "format-disconnected": "OFF"
+        "format-disconnected": "OFF",
+        "on-click": "kcmshell6 kcm_networkmanagement"
     },
 
     "disk": {
@@ -68,5 +70,14 @@
 
     "tray": {
         "spacing": 8
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 15,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-right": "close",
+        "all-outputs": false
     }
+
 }
